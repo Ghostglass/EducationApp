@@ -7,14 +7,13 @@
         "objective-cpp",
         "ruby",
         "search-result",
-    ]
-}
-    ["git.postCommitCommand": "push",
-    "git.showPushSuccessNotification": true,
-    ]"html.format.endWithNewline": true,
+        "!json" // disable checking for json
+        ]
+    }
+    ["html.format.endWithNewline": true,
     "html.format.indentInnerHtml": true,
     "html.format.templating": true,
     "ruby.codeCompletion": "rcodetools",
     "ruby.intellisense": "rubyLocate"
-    }
+    ]
 ]
