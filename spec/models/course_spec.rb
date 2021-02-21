@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Course, type: :model do
   it "create new course" do
-    course = Course.new(user_id: 1, title: "Hello")
+    course = Course.new(user_id: 1, title: "Create A New Course!")
     expect(course).to be_valid
   end
 
   it "is not valid without user" do
-    course = Course.new(title: "Hello")
+    course = Course.new(title: "Create A New Course!")
     expect(course).not_to be_valid
   end
 
