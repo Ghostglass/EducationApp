@@ -2,11 +2,12 @@
     "cSpell.enableFiletypes": [
         "!handlebars",
         "erb",
+        "gemfile",
         "git-rebase",
         "image",
         "objective-cpp",
         "ruby",
-        "search-result",
+        "search-result"
     ],
     "cSpell.words": [
         "Ghostglass",

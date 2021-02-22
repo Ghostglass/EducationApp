@@ -2,18 +2,31 @@ source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
+  "https://github.com/LiviaBas/EducationApp"
 end
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0'
+# bundler
+gem 'bundler', '~> 2.2.11'
+# Bundle edge Rails instead: gem 'rails', github: "~>6.1.0."
+gem 'rails', '~> 6.0.1.'
+# rails-dom-testing
+gem 'rails-testing', '~>2.0.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+# active storage
+gem 'active storage', '~> 6.1.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Use bootstrap 4 stylesheets
+gem 'bootstrap', '~> 4.0.0'
+# Use jquery rails
+gem 'jquery-rails', '~> 4.0.5'
+# Use actionpack
+gem 'actionpack', '~> 6.1.3'
+# Use popper_js
+gem 'popper_js', '~> 1.16.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -41,7 +54,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.9.1'
   gem 'database_cleaner-active_record'
 end
 
