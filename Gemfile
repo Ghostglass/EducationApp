@@ -7,8 +7,8 @@ end
 
 # bundler
 gem 'bundler', '~> 2.2.11'
-# Bundle edge Rails instead: gem 'rails', github: "~>6.1.0."
-gem 'rails', '~> 6.0.1.'
+# Bundle gem 'rails',
+gem 'rails-dom-testing', '~> 6.0.1.'
 # rails-dom-testing
 gem 'rails-testing', '~>2.0.3'
 # Use postgresql as the database for Active Record
