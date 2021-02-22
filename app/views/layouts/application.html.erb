@@ -37,6 +37,18 @@
           <li class="nav-item">
             <a class="nav-link purple-highlight" href="/logout">Log out</a>
           </li>
+          <% if current_url_rest_obj "courses" %>
+          <% current_path = request.env['PATH_INFO'] %>
+            <li class="nav-item">
+              <a class="nav-link">|</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: #918BFD !important;" href="<%= current_path %>/edit">Edit Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: #918BFD !important;" href="<%= current_path %>/posts/new">Add Post</a>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </nav>
@@ -46,5 +58,8 @@
       </div>
     <% end %>
     <%= yield %>
+    <footer align="center">
+      <p id="trademark">© 2021 KnowledgePill.com. All Rights Reserved.</p>
+    </footer>
   </body>
 </html>
