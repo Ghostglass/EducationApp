@@ -5,11 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/LiviaBas/EducationApp"
 end
 
-# bundler
-gem 'bundler', '~> 2.2.11'
 # Bundle gem 'rails',
-gem 'rails-dom-testing', '~> 6.0.1.'
-# rails-dom-testing
+gem 'bundler', '~> 2.2.11'
+# rails s
 gem 'rails-testing', '~>2.0.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
