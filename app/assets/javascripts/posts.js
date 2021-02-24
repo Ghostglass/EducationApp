@@ -11,4 +11,6 @@ $(document).ready(function(){
     $(this).css("background", "white");
   });
 
+  $("#edit-posts").sortable();
+
 });
