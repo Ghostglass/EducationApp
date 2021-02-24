@@ -17,4 +17,11 @@ class ApplicationController < ActionController::Base
     @is_owner = @course.user_id == session[:user_id]
   end
 
+  def only_permit_owner
+    unless @is_owner
+      flash[:warning] = "Only the course owner can do this. If you are the course owner, please log in."
+      redirect_back fallback_location: "/"
+    end
+  end
+
 end

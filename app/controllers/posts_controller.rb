@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :this_post, only: [:show, :edit, :update, :destroy]
   before_action :this_course, :is_owner, :is_subscribed
+  before_action :only_permit_owner, only: [:edit, :update, :destroy, :edit_all, :sort]
   
   # get /courses/:id/posts
   def index

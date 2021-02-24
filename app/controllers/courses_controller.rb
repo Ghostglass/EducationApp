@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :this_course, :is_owner, only: [:show, :edit, :update, :destroy]
+  before_action :only_permit_owner, only: [:update, :destroy]
 
   # get /courses
   def index
