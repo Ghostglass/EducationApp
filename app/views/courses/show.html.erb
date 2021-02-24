@@ -53,8 +53,8 @@
 
     <div class="tab-content">
       <div id="show_posts" class="tab-pane active">
-        <p><%= "You must be subscribed to view posts" unless @subscription.valid? || @course.user_id == session[:user_id] %></p>
-        <%= render "posts/index" %>
+        <%= render partial: "posts/index", locals: { post_limit: 5, viewing_course: true } %>
+        <%# Only show first 5 posts %>
       </div>
       <div id="edit" class="tab-pane">
         <%= render "courses/edit" %>

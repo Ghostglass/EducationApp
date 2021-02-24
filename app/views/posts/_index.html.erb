@@ -1,15 +1,23 @@
 <%# /courses/:id/posts %>
-
-<% if @course.user_id == session[:user_id] %>
-  <%= button_to "Add Post", new_course_post_path(@course), method: :get, id: "new-post", class: "p-button" %>
-<% end %>
-<div id="posts" <%= "class=blur" unless @subscription.valid? || @course.user_id == session[:user_id] %>>
-  <% if @course.posts.length == 0 %>
-    <p>No posts yet!</p>
-  <% elsif @course.posts.length > 10 %>
-    <%= render partial: @course.posts[0...10], locals: { disabled: ( !(@subscription.valid? || @course.user_id == session[:user_id]) ), editing: false } %>
-    <%= button_to "See More", course_posts_path(@course), method: :get, class: "p-button" %>
+<div class="button-panel">
+  <% if viewing_course %>
+    <%= button_to "View Posts", course_posts_path(@course), method: :get, class: "p-button" %>
   <% else %>
-    <%= render partial: @course.posts, locals: { disabled: ( !(@subscription.valid? || @course.user_id == session[:user_id])), editing: false } %>
+    <%= button_to "View Course", course_path(@course), method: :get, class: "p-button" %>
   <% end %>
+  <% if @course.user_id == session[:user_id] %>
+    <%= button_to "Add Post", new_course_post_path(@course), method: :get, class: "p-button" %>
+    <%= button_to "Edit Posts", edit_course_posts_path(@course), method: :get, class: "p-button" %> 
+  <% end %>
+</div>
+
+<div id="posts" <%= "class=blur" unless @subscription.valid? || @course.user_id == session[:user_id] %>>
+
+  <% post_limit ||= @course.posts.length %>
+  <% if post_limit == 0 %>
+    <p>No posts yet!</p>
+  <% else %>
+    <%= render partial: @course.posts.take(post_limit), locals: { disabled: ( !(@subscription.valid? || @course.user_id == session[:user_id])), editing: false } %>
+  <% end %>
+
 </div>
