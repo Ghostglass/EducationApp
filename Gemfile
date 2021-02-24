@@ -32,14 +32,15 @@ gem 'bcrypt', '~> 3.1.7'
 # Dependencies for action text
 gem "actiontext", require: "action_text"
 gem "image_processing"
+
 gem 'webpacker'
 gem 'google-cloud-storage'
 
-  gem 'acts_as_list'
-  gem 'jquery-rails'
-  gem 'jquery-ui-rails'
-  gem 'rails-ujs'
-  # for sorting posts
+gem 'acts_as_list'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'rails-ujs'
+# for sorting posts
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
