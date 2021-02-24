@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  get "contact_us" => "users#contact_us"
+
   resources :users
   resources :sessions, only: [:new, :create]
 

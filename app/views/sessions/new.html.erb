@@ -1,27 +1,30 @@
 <%# /login %>
-<br>
-<div class="field form-group col-md-4">
-  <%= form_tag sessions_url do %>
-    <label> Username </label>
-  <%= text_field_tag :username, nil, class: "form-control" %>
+<div style="margin-top: 180px"></div>
+<div class="" align="center">
+  <div class="field col-md-4">
+    <%= form_tag sessions_url do %>
+      <label> Username </label>
+    <%= text_field_tag :username, nil, class: "form-control" %>
+  </div>
+
+  <div class="field col-md-4">
+    <label> Password </label>
+      <%= password_field_tag :password, nil, class: "form-control"  %>
+  </div>
+
+  <!-- check box. Remembers username -->
+  <div class="form-check mb-2 mr-sm-2">
+    <label class="form-check-label" for="inlineFormCheck">
+      Remember me
+    </label>
+    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+  </div>
+  <br>
+
+  <div class="actions col-lg-2">
+    <button type="submit" class="p-button">Log In</button>
 </div>
 
-<div class="field form-group col-md-4">
-  <label> Password </label>
-    <%= password_field_tag :password, nil, class: "form-control"  %>
 </div>
-
-<!-- check box. Remembers username -->
-<div class="form-check mb-2 mr-sm-2">
-  <label class="form-check-label" for="inlineFormCheck">
-    Remember me
-  </label>
-  <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-</div>
-<br>
-
-<div class="actions form-group col-lg-2">
-  <button type="submit" class="btn btn-primary">Log In</button>
-</div>
-
+<%= image_tag "login-illustration.svg", id: 'login-illustration' %>
 <% end %>

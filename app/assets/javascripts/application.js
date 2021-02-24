@@ -17,13 +17,24 @@
 //= require jquery-ui
 //= require jquery-ui/widget
 //= require jquery-ui/widgets/sortable
-//= require trix/dist/trix 
+//= require trix/dist/trix
 //= require_tree .
 
-function fadeAlert(){
-  $(".alert").fadeTo(500, 0).slideUp(500, function(){
-    $(this).remove(); 
+window.onload = function () {
+  function fadeAlert(){
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove();
+    });
+  }
+
+  window.setTimeout(fadeAlert, 4000);
+
+  $(".p-ipt").click(function () {
+    const internal_label = $(this).find("+ span");
+    internal_label.addClass("internal-label-anim");
+  });
+  $(".p-ipt").blur(function () {
+    const internal_label = $(this).find("+ span");
+    internal_label.removeClass("internal-label-anim");
   });
 }
-
-window.setTimeout(fadeAlert, 4000);

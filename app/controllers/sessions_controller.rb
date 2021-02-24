@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Logged in!"
       redirect_to user_url(user.id)
     else
-      flash[:danger] = "Incorrect username or password"
+      flash[:danger] = "Incorrect Username or password"
       redirect_back fallback_location: "/"
     end
   end
