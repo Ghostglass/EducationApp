@@ -54,7 +54,7 @@ RSpec.describe CoursesController, type: :controller do
   describe "DELETE courses/:id" do
     it "redirects back" do
       delete :destroy, params: { id: 1 }
-      expect(response).to redirect_to("/")
+      expect(response).to redirect_to("/courses")
     end
 
     it "deletes a course" do

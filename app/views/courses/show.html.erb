@@ -31,7 +31,7 @@
 </div>
 
 <div id="buttons">
-  <% unless @course.user_id == session[:user_id] %>
+  <% unless @is_owner %>
     <% if @subscription.valid? %>
         <%= button_to 'Unsubscribe', course_subscription_path(@course, @subscription), method: :delete, class: 's-button purple-highlight' %>
         <%= render "ratings/rating_form" %>
@@ -45,7 +45,7 @@
   <div id="course-content">
     <ul class="nav nav-tabs">
       <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#show_posts">View Posts</a></li>
-      <% if @course.user_id == session[:user_id] %>
+      <% if @is_owner %>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#edit">Edit Course</a></li>
       <% end %>
     </ul>

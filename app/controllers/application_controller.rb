@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_owner
+    @is_owner = @course.user_id == session[:user_id]
+  end
+
 end

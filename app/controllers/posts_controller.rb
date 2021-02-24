@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :this_post, only: [:show, :edit, :update, :destroy]
-  before_action :this_course
-  before_action :is_subscribed
+  before_action :this_course, :is_owner, :is_subscribed
   
   # get /courses/:id/posts
   def index
@@ -86,7 +85,7 @@ class PostsController < ApplicationController
 
   def is_subscribed
     @subscription = Subscription.find_by(course_id: params[:course_id], user_id: session[:user_id]) || Subscription.new()
-    unless @subscription.valid? || @course.user_id == session[:user_id]
+    unless @subscription.valid? || @is_owner
       flash[:warning] = "You need to be subscribed to view this content"
       redirect_to course_url(@course)
     end

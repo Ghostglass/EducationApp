@@ -5,19 +5,19 @@
   <% else %>
     <%= button_to "View Course", course_path(@course), method: :get, class: "p-button" %>
   <% end %>
-  <% if @course.user_id == session[:user_id] %>
+  <% if @is_owner %>
     <%= button_to "Add Post", new_course_post_path(@course), method: :get, class: "p-button" %>
     <%= button_to "Edit Posts", edit_course_posts_path(@course), method: :get, class: "p-button" %> 
   <% end %>
 </div>
 
-<div id="posts" <%= "class=blur" unless @subscription.valid? || @course.user_id == session[:user_id] %>>
+<div id="posts" <%= "class=blur" unless @subscription.valid? || @is_owner %>>
 
   <% post_limit ||= @course.posts.length %>
   <% if post_limit == 0 %>
     <p>No posts yet!</p>
   <% else %>
-    <%= render partial: @course.posts.take(post_limit), locals: { disabled: ( !(@subscription.valid? || @course.user_id == session[:user_id])), editing: false } %>
+    <%= render partial: @course.posts.take(post_limit), locals: { disabled: ( !(@subscription.valid? || @is_owner)), editing: false } %>
   <% end %>
 
 </div>
