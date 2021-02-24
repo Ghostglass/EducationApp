@@ -9,11 +9,11 @@
 <% end %>
 
 <% if @user.id == session[:user_id] %>
-  <%= link_to "Edit Profile", edit_user_url, class: 'p-button' %>
+  <%= link_to "Edit Profile", edit_user_url(@user), class: 'p-button' %>
 <% end %>
 
 <% if @user.id == session[:user_id] %>
-  <%= link_to "Delete Profile", @user, method: :delete, class: 'p-button' %>
+  <%= link_to "Delete Profile", user_url(@user), method: :delete, class: 'p-button' %>
 <% end %>
 
 <h1 class="purple">Courses</h1>

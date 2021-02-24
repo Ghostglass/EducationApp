@@ -3,8 +3,8 @@
   <div class="inner-post">
    
     <% if editing %>
-      <%= button_to "x", [@course, post], method: :delete, class: "danger"%>
-      <h3><%= link_to post.title, [@course, post] %></h3>
+      <%= button_to "x", course_post_path(@course, post), method: :delete, class: "danger"%>
+      <h3><%= link_to post.title, course_post_path(@course, post) %></h3>
     <% else %>
       <h3><%= post.position %> - <%= post.title %></h3>
     <% end %>
