@@ -66,3 +66,10 @@ input#post_title {
 trix-editor#post_content {
   min-height: 50vh;
 }
+
+.post .danger{
+  float: right;
+  padding: 0;
+  margin: 0;
+  border: none;
+}

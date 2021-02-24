@@ -1,5 +1,3 @@
 <div id="edit-posts" class="list-group" data-url="<%= sort_course_posts_path %>">
-  <% @posts.each do |post| %>
-    <%= link_to post.title, [@course, post], class: "list-group-item", id: dom_id(post) %>
-  <% end %>
-</table>
+  <%= render partial: @posts, locals: { disabled: true, editing: true } %>
+</div>
