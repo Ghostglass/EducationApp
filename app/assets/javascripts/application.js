@@ -12,6 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require jquery-ui/widget
+//= require jquery-ui/widgets/sortable
+//= require trix/dist/trix 
 //= require_tree .
 
 function fadeAlert(){

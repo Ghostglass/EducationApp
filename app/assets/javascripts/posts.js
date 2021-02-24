@@ -11,4 +11,14 @@ $(document).ready(function(){
     $(this).css("background", "white");
   });
 
+  $("#edit-posts").sortable({
+    update: function(e, ui){
+      Rails.ajax({
+        url: $(this).data("url"),
+        type: "PATCH",
+        data: $(this).sortable("serialize"),
+      })
+    }
+  });
+
 });

@@ -31,7 +31,7 @@
 </div>
 
 <div id="buttons">
-  <% unless @course.user_id == session[:user_id] %>
+  <% unless @is_owner %>
     <% if @subscription.valid? %>
         <%= button_to 'Unsubscribe', course_subscription_path(@course, @subscription), method: :delete, class: 's-button purple-highlight' %>
         <%= render "ratings/rating_form" %>
@@ -44,8 +44,8 @@
 <div class="center-align">
   <div id="course-content">
     <ul class="nav nav-tabs">
-      <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#show_posts">View Posts</a></li>
-      <% if @course.user_id == session[:user_id] %>
+      <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#show_posts">Preview Posts</a></li>
+      <% if @is_owner %>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#edit">Edit Course</a></li>
       <% end %>
     </ul>
@@ -53,8 +53,8 @@
 
     <div class="tab-content">
       <div id="show_posts" class="tab-pane active">
-        <p><%= "You must be subscribed to view posts" unless @subscription.valid? || @course.user_id == session[:user_id] %></p>
-        <%= render "posts/index" %>
+        <%= render partial: "posts/index", locals: { post_limit: 5, viewing_course: true } %>
+        <%# Only show first 5 posts %>
       </div>
       <div id="edit" class="tab-pane">
         <%= render "courses/edit" %>

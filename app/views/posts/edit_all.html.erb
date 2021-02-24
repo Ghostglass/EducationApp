@@ -1,0 +1,10 @@
+<div class="page">
+  <h1>Edit Posts in '<%= link_to @course.title, course_path(@course), class: "purple" %>'</h1>
+  <hr style="width:50%">
+  <div class="button-panel">
+    <%= link_to "View Posts", course_posts_path(@course, @post), class: "p-button"%>
+  </div>
+  <div id="edit-posts" class="list-group" data-url="<%= sort_course_posts_path %>">
+    <%= render partial: @posts, locals: { disabled: true, editing: true } %>
+  </div>
+</div>

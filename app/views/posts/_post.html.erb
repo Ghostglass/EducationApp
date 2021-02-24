@@ -1,11 +1,19 @@
 <%# Individual post (/courses/:id/posts ) %>
-<div class="post" onclick="location.href='<%= disabled ? 'javascript:void(0)' : course_post_path(post.course_id, post.id) %>';">
+<div id="<%= dom_id(post) %>" class="post" onclick="location.href='<%= disabled ? 'javascript:void(0)' : course_post_path(post.course_id, post.id) %>';">
   <div class="inner-post">
-    <h3><%= post.position %> - <%= post.title %></h3>
+   
+    <% if editing %>
+      <%= button_to "x", course_post_path(@course, post), method: :delete, class: "danger"%>
+      <h3><%= link_to post.title, course_post_path(@course, post) %></h3>
+    <% else %>
+      <h3><%= post.position %> - <%= post.title %></h3>
+    <% end %>
+
     <% if post.content.to_plain_text.length > 100 %>
       <p><%= post.content.to_plain_text[0...100] %>...</p>
     <% else %>
       <p><%= post.content.to_plain_text %></p>
     <% end %>
+    
   </div>
 </div>

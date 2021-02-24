@@ -10,11 +10,20 @@
 
 // POST PREVIEWS
 
-#new-post{
+.button-panel{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.button-panel form {
+  display: inline;
+}
+
+.button-panel .p-button{
   margin-bottom: 1rem;
   padding-left: 20px;
   padding-right: 20px;
-  width: min-content;
+  width: fit-content;
 }
 
 .post{
@@ -65,4 +74,16 @@ input#post_title {
 
 trix-editor#post_content {
   min-height: 50vh;
+}
+
+#edit-posts{
+  display: inline-block;
+  width: 100%;
+}
+
+.post .danger{
+  float: right;
+  padding: 0;
+  margin: 0;
+  border: none;
 }

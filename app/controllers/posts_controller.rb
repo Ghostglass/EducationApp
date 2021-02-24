@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :this_post, only: [:show, :edit, :update, :destroy]
-  before_action :this_course
-  before_action :is_subscribed
+  before_action :this_course, :is_owner, :is_subscribed
+  before_action :only_permit_owner, only: [:edit, :update, :destroy, :edit_all, :sort]
   
   # get /courses/:id/posts
   def index
@@ -60,6 +60,20 @@ class PostsController < ApplicationController
     end
   end
 
+  # get /courses/:course_id/posts/edit
+  def edit_all
+    @posts = Post.with_rich_text_content.where(course_id: params[:course_id]).order(:position)
+  end
+
+  # patch /courses/:course_id/posts
+  def sort
+    params[:post].each_with_index do |id, index|
+      Post.where(id: id).update_all(position: index + 1)
+      # user where so only one db request
+    end
+    head :ok
+  end
+
   private
 
   def this_post
@@ -72,7 +86,7 @@ class PostsController < ApplicationController
 
   def is_subscribed
     @subscription = Subscription.find_by(course_id: params[:course_id], user_id: session[:user_id]) || Subscription.new()
-    unless @subscription.valid? || @course.user_id == session[:user_id]
+    unless @subscription.valid? || @is_owner
       flash[:warning] = "You need to be subscribed to view this content"
       redirect_to course_url(@course)
     end
