@@ -43,6 +43,9 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
   gem 'database_cleaner-active_record'
+
+  gem 'acts_as_list'
+  # for sorting posts
 end
 
 group :development do

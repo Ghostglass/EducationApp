@@ -60,6 +60,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    acts_as_list (1.0.3)
+      activerecord (>= 4.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     bcrypt (3.1.16)
@@ -155,10 +157,14 @@ GEM
     mimemagic (0.3.5)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.3)
     multi_json (1.15.0)
     multipart-post (2.1.1)
     nio4r (2.5.5)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
     os (1.1.1)
@@ -287,6 +293,7 @@ PLATFORMS
 
 DEPENDENCIES
   actiontext
+  acts_as_list
   bcrypt (~> 3.1.7)
   byebug
   capybara (~> 2.13)
@@ -307,4 +314,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   2.2.7
+   2.2.11
