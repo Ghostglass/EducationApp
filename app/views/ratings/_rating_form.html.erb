@@ -1,8 +1,10 @@
-<%= form_for [@course, @user_rating] do |f| %>
+<% rating = @course.user_rating ? Rating.find(@course.user_rating) : Rating.new() %>
+
+<%= form_for [@course, rating] do |f| %>
   <%= f.select(:value, options_for_select([1,2,3,4,5])) %>
   <%= f.submit %>
 <% end %>
     
-<% if @user_rating.valid? %>
-  <%= button_to 'Delete Rating', course_rating_path(@course, @user_rating), method: :delete %>
+<% if @course.user_rating %>
+  <%= button_to 'Delete Rating', course_rating_path(@course, rating), method: :delete %>
 <% end %>
