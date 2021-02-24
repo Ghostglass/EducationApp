@@ -33,10 +33,10 @@
 <div id="buttons">
   <% unless @is_owner %>
     <% if @course.is_subbed %>
-        <%= button_to 'Unsubscribe', course_subscription_path(@course, @subscription), method: :delete, class: 's-button purple-highlight' %>
+        <%= button_to 'Unsubscribe', course_subscription_path( @course, @course.is_subbed ), method: :delete, class: 's-button purple-highlight' %>
         <%= render "ratings/rating_form" %>
     <% else %>
-      <%= button_to "Subscribe",  course_subscriptions_path(@course, @subscription), method: :create, class: 's-button purple-highlight' %>
+      <%= button_to "Subscribe",  course_subscriptions_path(@course, Subscription.new(course_id: @course.id, user_id: session[:user_id])), method: :create, class: 's-button purple-highlight' %>
     <% end %>
   <% end %>
 </div>

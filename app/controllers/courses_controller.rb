@@ -41,9 +41,7 @@ class CoursesController < ApplicationController
 
   # get /courses/:id
   def show
-    @user_rating = Rating.find_by(user_id: session[:user_id], course_id: params[:id]) || Rating.new
     @posts = @course.posts.with_rich_text_content
-    # if subscribed, gets that subscription, else creates new subscription (so that can render @subscription )
   end
 
   # put/patch courses/:id
@@ -78,20 +76,21 @@ class CoursesController < ApplicationController
     @course = Course.with_attached_main_image.find_by_sql("
     SELECT
       users.username,
-        courses.*
-        FROM (
-          SELECT
-            courses.*,
-                AVG(coalesce(ratings.value, 0)) AS rating,
-                bool_or( EXISTS (SELECT id FROM subscriptions WHERE subscriptions.course_id = courses.id AND subscriptions.user_id = 2)) as is_subbed
-            FROM
-                courses
-            FULL JOIN ratings ON courses.id = ratings.course_id
-            GROUP BY
-              courses.id) 
-            AS courses
-            JOIN users ON users.id = courses.user_id
-    WHERE courses.id = #{params[:id]};").first
+      courses.*
+    FROM (
+      SELECT
+        courses.*,
+        AVG(coalesce(ratings.value, 0)) AS rating,
+        ( SELECT id FROM subscriptions WHERE subscriptions.course_id = courses.id #{ session[:user_id].nil? ? "" : "AND subscriptions.user_id = #{ session[:user_id] }" }) AS is_subbed,
+        (SELECT id FROM ratings WHERE ratings.course_id = courses.id #{ session[:user_id].nil? ? "" : "AND ratings.user_id = #{ session[:user_id] }" }) AS user_rating
+      FROM
+        courses
+        FULL JOIN ratings ON courses.id = ratings.course_id
+      GROUP BY courses.id
+      ) AS courses
+      JOIN users ON users.id = courses.user_id
+    WHERE
+      courses.id = '#{params[:id]}';").first
   end
 
   def course_params
