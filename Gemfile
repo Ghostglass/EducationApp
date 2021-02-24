@@ -47,6 +47,7 @@ group :development, :test do
   gem 'acts_as_list'
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
+  gem 'rails-ujs'
   # for sorting posts
 end
 
