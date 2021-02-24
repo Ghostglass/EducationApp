@@ -1,7 +1,7 @@
 <%# /courses/:id/posts %>
 <div class="button-panel">
   <% if viewing_course %>
-    <%= button_to "View Posts", course_posts_path(@course), method: :get, class: "p-button" %>
+    <%= button_to "View all Posts", course_posts_path(@course), method: :get, class: "p-button" %>
   <% else %>
     <%= button_to "View Course", course_path(@course), method: :get, class: "p-button" %>
   <% end %>
@@ -18,6 +18,9 @@
     <p>No posts yet!</p>
   <% else %>
     <%= render partial: @course.posts.take(post_limit), locals: { disabled: ( !(@subscription.valid? || @is_owner)), editing: false } %>
+    <% if post_limit < @course.posts.length %>
+      <h3>...</h3>
+    <% end %>
   <% end %>
 
 </div>
