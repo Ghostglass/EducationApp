@@ -14,7 +14,12 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
 
   resources :courses do
-    resources :posts
+    resources :posts do
+      collection do
+        get "edit", to: "posts#edit_all"
+        patch :sort
+      end
+    end
     resources :subscriptions, only: [:create, :destroy]
     resources :ratings, only: [:create, :update, :destroy]
   end

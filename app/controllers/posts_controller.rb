@@ -60,6 +60,20 @@ class PostsController < ApplicationController
     end
   end
 
+  # get /courses/:course_id/posts/edit
+  def edit_all
+    @posts = Post.with_rich_text_content.where(course_id: params[:course_id]).order(:position)
+  end
+
+  # patch /courses/:course_id/posts
+  def sort
+    params[:post].each_with_index do |id, index|
+      Post.where(id: id).update_all(position: index + 1)
+      # user where so only one db request
+    end
+    head :ok
+  end
+
   private
 
   def this_post
