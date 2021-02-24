@@ -45,6 +45,8 @@ group :development, :test do
   gem 'database_cleaner-active_record'
 
   gem 'acts_as_list'
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
   # for sorting posts
 end
 

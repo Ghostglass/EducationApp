@@ -10,3 +10,6 @@
 import "@rails/actiontext"
 require("trix")
 require("@rails/actiontext")
+
+require("jquery")
+require("jquery-ui")
