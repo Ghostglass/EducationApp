@@ -84,7 +84,7 @@ class PostsController < ApplicationController
     @course = Course.find_by_sql("    	
     SELECT
       courses.*,
-      (SELECT id FROM subscriptions WHERE subscriptions.course_id = courses.id #{ session[:user_id].nil? ? "" : "AND subscriptions.user_id = #{ session[:user_id] }" }) as is_subbed
+      (SELECT id FROM subscriptions WHERE subscriptions.course_id = courses.id AND subscriptions.user_id = #{ session[:user_id].nil? ? "NULL" : session[:user_id] }) as is_subbed
     FROM courses
     WHERE courses.id = #{ params[:course_id] }
     GROUP BY courses.id;

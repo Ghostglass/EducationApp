@@ -81,8 +81,8 @@ class CoursesController < ApplicationController
       SELECT
         courses.*,
         AVG(coalesce(ratings.value, 0)) AS rating,
-        ( SELECT id FROM subscriptions WHERE subscriptions.course_id = courses.id #{ session[:user_id].nil? ? "" : "AND subscriptions.user_id = #{ session[:user_id] }" }) AS is_subbed,
-        (SELECT id FROM ratings WHERE ratings.course_id = courses.id #{ session[:user_id].nil? ? "" : "AND ratings.user_id = #{ session[:user_id] }" }) AS user_rating
+        ( SELECT id FROM subscriptions WHERE subscriptions.course_id = courses.id AND subscriptions.user_id = #{ session[:user_id].nil? ? "NULL" : session[:user_id] } ) AS is_subbed,
+        (SELECT id FROM ratings WHERE ratings.course_id = courses.id AND ratings.user_id = #{ session[:user_id].nil? ? "NULL" : session[:user_id] } ) AS user_rating
       FROM
         courses
         FULL JOIN ratings ON courses.id = ratings.course_id
