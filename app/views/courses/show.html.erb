@@ -32,7 +32,7 @@
 
 <div id="buttons">
   <% unless @is_owner %>
-    <% if @subscription.valid? %>
+    <% if @course.is_subbed %>
         <%= button_to 'Unsubscribe', course_subscription_path(@course, @subscription), method: :delete, class: 's-button purple-highlight' %>
         <%= render "ratings/rating_form" %>
     <% else %>
