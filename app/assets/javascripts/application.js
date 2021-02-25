@@ -17,7 +17,6 @@
 //= require jquery-ui
 //= require jquery-ui/widget
 //= require jquery-ui/widgets/sortable
-//= require trix/dist/trix
 //= require_tree .
 
 window.onload = function () {
