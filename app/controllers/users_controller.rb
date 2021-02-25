@@ -21,10 +21,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def contact_us
-    
-  end
-
   # GET /users/:id
   def show
     @all_courses = Course.with_attached_main_image.find_by_sql("
