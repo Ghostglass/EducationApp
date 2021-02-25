@@ -34,3 +34,5 @@ yarn-debug.log*
 .DS_Store
 /config/secrets
 /config/master.key
+
+/coverage/
