@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
     resources :subscriptions, only: [:create, :destroy]
     resources :ratings, only: [:create, :update, :destroy]
+    resources :comments, only: [:create, :update, :destroy]
   end
 
 end
