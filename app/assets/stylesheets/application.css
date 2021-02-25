@@ -198,18 +198,19 @@ nav {
   display: inline-block;
   cursor: pointer;
   position: relative;
-  background: black;
+  background: black !important;
+  color: white;
   padding: 4px 6px 4px 6px;
   border-radius: 6px;
-  border: 2px solid transparent;
+  border-bottom: 5px solid transparent;
   outline: none;
   transition: 0.3s;
 }
 
 .s-button:hover {
-  border: 2px solid black;
+  border-bottom: 5px solid #6c63ff;
   background: transparent;
-  color: black;
+  color: #6c63ff;
   transition: 0.3s;
 }
 
