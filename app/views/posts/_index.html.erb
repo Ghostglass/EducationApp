@@ -1,13 +1,13 @@
 <%# /courses/:id/posts %>
 <div class="button-panel">
   <% if viewing_course %>
-    <%= button_to "View all Posts", course_posts_path(@course), method: :get, class: "p-button" %>
+    <%= link_to "View all Posts", course_posts_path(@course), class: "p-button" %>	
   <% else %>
-    <%= button_to "View Course", course_path(@course), method: :get, class: "p-button" %>
+    <%= link_to "View Course", course_path(@course), method: :get, class: "p-button" %>
   <% end %>
   <% if @is_owner %>
-    <%= button_to "Add Post", new_course_post_path(@course), method: :get, class: "p-button" %>
-    <%= button_to "Edit Posts", edit_course_posts_path(@course), method: :get, class: "p-button" %> 
+    <%= link_to "Add Post", new_course_post_path(@course), class: "p-button" %>
+    <%= link_to "Edit Posts", edit_course_posts_path(@course), class: "p-button" %> 
   <% end %>
 </div>
 

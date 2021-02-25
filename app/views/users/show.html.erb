@@ -1,21 +1,23 @@
 <%# /users/:id %>
+<div align="center">
 
-<h2><span class="purple-highlight"><%= @user.username %></span>'s Profile</h2>
 
-<% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar.variant(gravity: "Center", crop: '250x250+0+0') %>
-<% else %>
-  <%= image_tag "default-profile.png", width: 250%>
-<% end %>
+  <h2><span class="purple-highlight"><%= @user.username %></span>'s Profile</h2>
 
-<% if @user.id == session[:user_id] %>
-  <%= link_to "Edit Profile", edit_user_url(@user), class: 'p-button' %>
-<% end %>
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar.variant(gravity: "Center", crop: '300x300+0+0') %>
+  <% else %>
+    <%= image_tag "default-profile.png", width: 250%>
+  <% end %>
+  <br><br>
+  <% if @user.id == session[:user_id] %>
+    <%= link_to "Edit Profile", edit_user_url(@user), class: 'p-button' %>
+  <% end %>
 
-<% if @user.id == session[:user_id] %>
-  <%= link_to "Delete Profile", user_url(@user), method: :delete, class: 'p-button' %>
-<% end %>
-
+  <% if @user.id == session[:user_id] %>
+    <%= link_to "Delete Profile", user_url(@user), method: :delete, class: 'p-button' %>
+  <% end %>
+</div>
 <h1 class="purple">Courses</h1>
 <% courses = @all_courses.select{|course| course.user_id == @user.id } %>
 <% if courses.length > 0 %>
