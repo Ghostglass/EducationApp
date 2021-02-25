@@ -4,6 +4,7 @@ class Course < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates_presence_of :user_id, :title
   has_one_attached :main_image

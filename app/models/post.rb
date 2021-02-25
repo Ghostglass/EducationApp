@@ -3,6 +3,9 @@ class Post < ApplicationRecord
   has_rich_text :content
   validates_presence_of :course_id, :title, :content
 
+  has_many :comments, dependent: :destroy
+
+
   before_create :set_position	
 
   private
