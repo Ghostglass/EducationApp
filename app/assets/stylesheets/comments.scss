@@ -1,3 +1,59 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+form#new-comment{
+  width : 100% !important ;
+  margin-bottom: 0 !important;
+}
+
+#new-comment .right-align {
+  padding-top: 0;
+}
+
+#new-comment .right-align .s-button{
+  margin-top: none;
+  padding: 2px;
+  width: min-content !important;
+}
+.comment{
+  border: solid 1px gainsboro;
+  border-radius: 5px;
+  width: 90%;
+  margin: auto;
+  display: inline-block;
+  text-align: left;
+  background: white;
+}
+
+.container-fluid {
+  padding: 5px;
+}
+
+#comments .profile-pic{
+  width: 10%;
+  display: table-cell;
+}
+
+#comments .profile-pic img{
+  width: 100% !important;
+  height: auto;
+  border-radius: 50%;
+}
+
+.comment-text{
+  text-align: left;
+  display: table-cell;
+  width: 89%;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+.details{
+  font-style: italic;
+}
+
+.details span{
+  font-size: x-small;
+  color: grey;
+}

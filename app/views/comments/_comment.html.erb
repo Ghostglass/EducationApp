@@ -1,0 +1,21 @@
+<div class="comment">
+  <div class="container-fluid">
+    <% user = User.find(comment[:user_id])%>
+    <div class="profile-pic">
+      <% if user.avatar.attached? %>
+          <%= image_tag user.avatar.variant(gravity: "Center", crop: '300x300+0+0') %>
+        <% else %>
+          <%= image_tag "default-profile.png", width: 25%>
+        <% end %>
+    </div>
+    <div class="comment-text">
+      <div class="user-details">
+        <%= link_to "@#{user.username}", user_path(user.id) %>
+        <span style="font-size: smaller;"><%= comment.created_at %></span>
+      </div>
+      <div class="comment-body">
+        <%= comment.body %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 
 <%= form_for [@course, @post, @comment] do |f| %>
   <%= f.text_area :body %>
-  <%= f.submit %>
+  <div class="right-align">
+    <%= f.submit "Add Comment", class: "s-button" %>
+  </div>
 <% end %>
