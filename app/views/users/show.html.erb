@@ -1,43 +1,74 @@
 <%# /users/:id %>
-<div align="center">
+<div id="profile">
+  <div align="center">
+
+    <div class="col i-purple-cont">
+      <h2><span class="purple-highlight">@<%= @user.username %></span>'s Profile</h2>
+
+      <div id="avatar">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar.variant(gravity: "Center", crop: '300x300+0+0') %>
+        <% else %>
+          <%= image_tag "default-profile.png", width: 250%>
+        <% end %>
+        <br><br>
+      </div>
+
+      <% if @user.id == session[:user_id] %>
+        <div id="user-buttons">
+          <%= link_to "Edit Profile", edit_user_url(@user), class: 's-button' %>
+          <%= link_to "Delete Profile", user_url(@user), method: :delete, class: 's-button' %>
+        </div>
+      <% end %>
+    </div>
 
 
-  <h2><span class="purple-highlight"><%= @user.username %></span>'s Profile</h2>
+    <div class="center-align">
+      <div id="user-content">
+        <ul class="nav nav-tabs">
+          <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#courses">View Courses</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#subscriptions">View Subscriptions</a></li>
+        </ul>
+        <%# Tabs -> only shows edit  %>
 
-  <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar.variant(gravity: "Center", crop: '300x300+0+0') %>
-  <% else %>
-    <%= image_tag "default-profile.png", width: 250%>
-  <% end %>
-  <br><br>
-  <% if @user.id == session[:user_id] %>
-    <%= link_to "Edit Profile", edit_user_url(@user), class: 'p-button' %>
-  <% end %>
+        <div class="tab-content">
+          
+          <div id="courses" class="tab-pane active">
+            <h1 class="purple">Courses</h1>
+            <hr style="width:50%">
+            <%= link_to "Create new course", new_course_url, class: 'p-button ml-st' %>
+            <% courses = @all_courses.select{|course| course.user_id == @user.id } %>
+            <% if courses.length > 0 %>
+              <div class="container-fluid">
+                <div class="row">
+                  <%= render courses %>
+                </div>
+              </div>
+            <% else %>
+              <p>This user hasn't made any courses yet!</p>
+            <% end %>
+          </div>
 
-  <% if @user.id == session[:user_id] %>
-    <%= link_to "Delete Profile", user_url(@user), method: :delete, class: 'p-button' %>
-  <% end %>
+          <div id="subscriptions" class="tab-pane">
+            <h1 class="purple">Subscriptions</h1>
+            <hr style="width:50%">
+            <% subscriptions = @all_courses.select{|course| course.is_subbed } %>
+            <% if subscriptions.length > 0 %>
+              <div class="container-fluid">
+                <div class="row">
+                    <%= render subscriptions %>
+                </div>
+              </div>
+            <% else %>
+              <p>This user hasn't subscribed to any courses yet!</p>
+            <% end %>
+          </div>
+
+        </div>
+        <%# Render tabs -> edit course %>
+      </div>
+    </div>
+  </div>
 </div>
-<h1 class="purple">Courses</h1>
-<% courses = @all_courses.select{|course| course.user_id == @user.id } %>
-<% if courses.length > 0 %>
-  <div class="container-fluid">
-    <div class="row">
-      <%= render courses %>
-    </div>
-  </div>
-<% else %>
-  <p>This user hasn't made any courses yet!</p>
-<% end %>
 
-<h1 class="purple">Subscriptions</h1>
-<% subscriptions = @all_courses.select{|course| course.is_subbed } %>
-<% if subscriptions.length > 0 %>
-  <div class="container-fluid">
-    <div class="row">
-        <%= render subscriptions %>
-    </div>
-  </div>
-<% else %>
-  <p>This user hasn't subscribed to any courses yet!</p>
-<% end %>
+

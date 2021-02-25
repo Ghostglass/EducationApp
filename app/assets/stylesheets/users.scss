@@ -1,3 +1,57 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#profile{
+  background-color: white !important;
+}
+
+#profile .i-purple-cont {
+  min-height: 0;
+}
+
+#avatar img{
+  border-radius: 50%;
+}
+#user-buttons .s-button {
+  padding: 5px;
+  border: none;
+}
+
+#user-buttons .s-button:hover {
+  background: white;
+  color: #6c63ff;
+  border: none;
+}
+
+#user-content{
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  width: 80%;
+  display: inline-block;
+}
+#user-content a.nav-link {
+  border-bottom: 0;
+}
+
+#user-content a.nav-link.active {
+  background: #f4f4f4;
+}
+
+.tab-content{
+  border: 1px solid gainsboro;
+  background: #f4f4f4;
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 2rem;
+  padding: 10px 50px 10px 50px;
+  min-height: 70vh;
+}
+
+.tab-content .container-fluid{
+  margin-bottom: 4rem;
+}
+
+#courses a.p-button.ml-st {
+  margin-bottom: 1rem;
+}
