@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :this_rating, only: [:update, :destroy]	
+  before_action :this_comment, only: [:update, :destroy]	
 
 # POST /comments
 def create
@@ -49,7 +49,10 @@ end
   end	
 
  def comment_params
-   params.require(:comment).permit(:body, :user_id, :post_id)
+  comment_params = params.require(:comment).permit(:post_id, :user_id, :body)	
+  comment_params[:post_id] ||= params[:post_id]	
+  comment_params[:user_id] ||= session[:user_id]	
+  return comment_params	
  end
-
+  
 end

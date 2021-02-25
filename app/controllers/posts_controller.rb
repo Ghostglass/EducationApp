@@ -28,6 +28,7 @@ class PostsController < ApplicationController
 
   # get /courses/:course_id/posts/:id
   def show
+    @comment = Comment.new
   end
 
   # get courses/:course_id/posts/:id/edit 
