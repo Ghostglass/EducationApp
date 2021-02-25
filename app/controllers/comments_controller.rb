@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :this_rating, only: [:update, :destroy]	
 
-# POST /courses/:course_id/comments
+# POST /comments
 def create
   begin
     Comment.create!(comment_params)
@@ -13,10 +14,10 @@ def create
   end
 end
 
-# PATCH/PUT /courses/:course_id/comments/:id	
+# PATCH/PUT /comments/:id	
 def update	
   begin	
-    @comment.update(comment_params) 	
+    @comment.update!(comment_params) 	
   rescue => exception	
     flash[:danger] = exception	
   else	
@@ -26,10 +27,12 @@ def update
   end 	
 end	
 
-# DELETE /courses/:course_id/comments/:id
+# DELETE /comments/:id
+# DELETE /comments/:id	
+
 def destroy
   begin
-    Comment.find(params[:id]).destroy!
+    @comment.destroy!
   rescue => exception
     flash[:danger] = exception
   else
@@ -41,7 +44,12 @@ end
 
  private
 
+  def this_comment	
+    @comment = Comment.find(params[:id])	
+  end	
+
  def comment_params
-   params.require(:comment).permit(:body, :user_id, :post_id, :course_id)
+   params.require(:comment).permit(:body, :user_id, :post_id)
  end
+
 end

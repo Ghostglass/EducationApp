@@ -4,7 +4,7 @@ class RatingsController < ApplicationController
   # POST /courses/:course_id/ratings	
   def create	
     begin	
-      Rating.create(rating_params)	
+      Rating.create!(rating_params)	
     rescue => exception	
       flash[:danger] = exception	
     else	
@@ -17,7 +17,7 @@ class RatingsController < ApplicationController
   # PATCH/PUT /courses/:course_id/ratings/:id	
   def update	
     begin	
-      @rating.update(rating_params) 	
+      @rating.update!(rating_params) 	
     rescue => exception	
       flash[:danger] = exception	
     else	
@@ -30,7 +30,7 @@ class RatingsController < ApplicationController
   # DELETE /courses/:course_id/ratings/:id	
   def destroy	
     begin	
-      @rating.destroy	
+      @rating.destroy!
     rescue => exception	
       flash[:danger] = exception	
     else	
