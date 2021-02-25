@@ -1,0 +1,6 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fnil\fcharset0 Nirmala UI;}}
+{\colortbl ;\red165\green165\blue165;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs56\lang9 <%= @post.title %>\line\cf1\b0\i\fs22 Link: https://knowledge-pill.herokuapp.com/courses/<%= @post.course_id %>/posts/<%= @post.id %>\line\cf0\i0 ___________________________________________________________________________________________\par
+<%= strip_tags(@post.content.body.to_trix_html) %>\i\par
+}

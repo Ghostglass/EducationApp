@@ -28,6 +28,14 @@ class PostsController < ApplicationController
 
   # get /courses/:course_id/posts/:id
   def show
+    respond_to do |format|
+        format.html
+        format.rtf do
+          headers['Content-Disposition'] = "attachment;  filename=course_#{@post.course_id}_post_#{@post.id}"
+          render rtf: @post
+          # Download as rtf
+        end
+    end
   end
 
   # get courses/:course_id/posts/:id/edit 

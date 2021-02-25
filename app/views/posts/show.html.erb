@@ -9,6 +9,7 @@
     <% if @post.course.user_id == session[:user_id] %>
       <%= link_to "Edit Post", edit_course_post_url(@course, @post), class: "p-button" %>
     <% end %>
+    <%= link_to "Download", course_post_url(@course, @post, format: :rtf), class: "p-button" %>
   </div>
   <div id="post-content">
     <%= @post.content %>
