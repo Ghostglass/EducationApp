@@ -1,58 +1,43 @@
 class CommentsController < ApplicationController
 
- def create
-
-   @comment = Comment.new(comment_params)
-
-
-   if @comment.save
-     redirect_back fallback_location: post_path, flash: { success: 'Comment was created successfully!'}
-   else
-     redirect_back fallback_location: post_path, flash: { danger: 'Post was not saved'}
-   end
- end
-
- private
-
- def comment_params
-   params.require(:comment).permit(:body, :user_id, :post_id, :course_id)
- end
+# POST /courses/:course_id/comments
+def create
+  begin
+    Comment.create!(comment_params)
+  rescue => exception
+    flash[:danger] = exception
+  else
+    flash[:success] = "Added comment!"
+  ensure
+    redirect_back fallback_location: "/"
+  end
 end
 
-class CommentsController < ApplicationController
+# PATCH/PUT /courses/:course_id/comments/:id	
+def update	
+  begin	
+    @comment.update(comment_params) 	
+  rescue => exception	
+    flash[:danger] = exception	
+  else	
+    flash[:success] = "Updated your comment!"	
+  ensure	
+    redirect_back fallback_location: "/"	
+  end 	
+end	
 
- def create
-
-   @comment = Comment.new(comment_params)
-
-
-   if @comment.save
-     redirect_back fallback_location: post_path, flash: { success: 'Comment was created successfully!'}
-   else
-     redirect_back fallback_location: post_path, flash: { danger: 'Post was not saved'}
-   end
- end
-
- private
-
- def comment_params
-   params.require(:comment).permit(:body, :user_id, :post_id, :course_id)
- end
+# DELETE /courses/:course_id/comments/:id
+def destroy
+  begin
+    Comment.find(params[:id]).destroy!
+  rescue => exception
+    flash[:danger] = exception
+  else
+    flash[:success] = "Removed comment!"
+  ensure
+    redirect_back fallback_location: "/"
+  end
 end
-
-class CommentsController < ApplicationController
-
- def create
-
-   @comment = Comment.new(comment_params)
-
-
-   if @comment.save
-     redirect_back fallback_location: post_path, flash: { success: 'Comment was created successfully!'}
-   else
-     redirect_back fallback_location: post_path, flash: { danger: 'Post was not saved'}
-   end
- end
 
  private
 
