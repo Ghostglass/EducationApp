@@ -5,7 +5,7 @@
 // NEW COURSE
 
 #course_title, #course_description {
-  width: 60%;
+  width: 500px !important ;
   margin-bottom: 0.5rem;
 }
 
@@ -59,6 +59,14 @@ footer {
   min-height: 500px;
 }
 
+.edit_course input, label {
+  width: 500px !important;
+}
+
+#delete-course{
+  margin-bottom: 30px;
+}
+
 .danger{
   margin-top: 0.5rem;
   background: white;
@@ -68,8 +76,14 @@ footer {
   padding: 10px 10px 10px 10px;
   color: red;
   outline: none;
-  border: 1.5px solid red;
+  border: 2px solid transparent;
   cursor: pointer;
+}
+
+.danger:hover {
+  border: 2px solid red;
+  background: transparent;
+  transition: 0.3s;
 }
 
 .blur {

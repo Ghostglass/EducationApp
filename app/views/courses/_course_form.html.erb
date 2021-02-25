@@ -1,19 +1,19 @@
 <div align="center">
   <%= form_for @course do |form| %>
-    <%= form.label :title %>
+    <%= form.label :title, style: "width: 500px !important" %>
     <br>
     <%= form.text_field :title %>
     <br>
-    <%= form.label :description %>
+    <%= form.label :description, style: "width: 500px !important" %>
     <br>
     <%= form.text_area :description, rows: "10" %>
     <br>
-    <label class="btn p-button btn-file">
+    <label class="btn p-button btn-file", style="width: 500px !important">
       Select course banner
       <%= form.file_field :main_image %> 
     </label>
     <br>
-    <hr style="border-color: white; margin: 0;">
-    <%= form.submit "Submit", class: "s-button purple-highlight" %>
+    <hr style="border-color: #f4f4f4; margin: 0;">
+    <%= form.submit "Submit", class: "s-button purple-highlight", style: "width: 500px !important" %>
   <% end %>
 </div>
