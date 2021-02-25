@@ -1,62 +1,58 @@
 class CommentsController < ApplicationController
+  before_action :this_comment, only: [:update, :destroy]	
 
- def create
-
-   @comment = Comment.new(comment_params)
-
-
-   if @comment.save
-     redirect_back fallback_location: post_path, flash: { success: 'Comment was created successfully!'}
-   else
-     redirect_back fallback_location: post_path, flash: { danger: 'Post was not saved'}
-   end
- end
-
- private
-
- def comment_params
-   params.require(:comment).permit(:body, :user_id, :post_id, :course_id)
- end
+# POST /comments
+def create
+  begin
+    Comment.create!(comment_params)
+  rescue => exception
+    flash[:danger] = exception
+  else
+    flash[:success] = "Added comment!"
+  ensure
+    redirect_back fallback_location: "/"
+  end
 end
 
-class CommentsController < ApplicationController
+# PATCH/PUT /comments/:id	
+def update	
+  begin	
+    @comment.update!(comment_params) 	
+  rescue => exception	
+    flash[:danger] = exception	
+  else	
+    flash[:success] = "Updated your comment!"	
+  ensure	
+    redirect_back fallback_location: "/"	
+  end 	
+end	
 
- def create
+# DELETE /comments/:id
+# DELETE /comments/:id	
 
-   @comment = Comment.new(comment_params)
-
-
-   if @comment.save
-     redirect_back fallback_location: post_path, flash: { success: 'Comment was created successfully!'}
-   else
-     redirect_back fallback_location: post_path, flash: { danger: 'Post was not saved'}
-   end
- end
-
- private
-
- def comment_params
-   params.require(:comment).permit(:body, :user_id, :post_id, :course_id)
- end
+def destroy
+  begin
+    @comment.destroy!
+  rescue => exception
+    flash[:danger] = exception
+  else
+    flash[:success] = "Removed comment!"
+  ensure
+    redirect_back fallback_location: "/"
+  end
 end
 
-class CommentsController < ApplicationController
-
- def create
-
-   @comment = Comment.new(comment_params)
-
-
-   if @comment.save
-     redirect_back fallback_location: post_path, flash: { success: 'Comment was created successfully!'}
-   else
-     redirect_back fallback_location: post_path, flash: { danger: 'Post was not saved'}
-   end
- end
-
  private
 
+  def this_comment	
+    @comment = Comment.find(params[:id])	
+  end	
+
  def comment_params
-   params.require(:comment).permit(:body, :user_id, :post_id, :course_id)
+  comment_params = params.require(:comment).permit(:post_id, :user_id, :body)	
+  comment_params[:post_id] ||= params[:post_id]	
+  comment_params[:user_id] ||= session[:user_id]	
+  return comment_params	
  end
+  
 end

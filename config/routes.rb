@@ -21,10 +21,10 @@ Rails.application.routes.draw do
         get "edit", to: "posts#edit_all"
         patch :sort
       end
+      resources :comments, shallow: true
     end
     resources :subscriptions, only: [:create, :destroy]
     resources :ratings, only: [:create, :update, :destroy]
-    resources :comments, only: [:create, :update, :destroy]
   end
 
 end

@@ -16,12 +16,15 @@
     </svg>
     <% end %>
   </div>
+
   <div id="post-content">
     <%= @post.content %>
   </div>
+
+  <div id="comments">
+    <%= render "comments/index" %>
+  </div>
+  
 </div>
-
-<%= render "comments_form" %>
-
 
 
