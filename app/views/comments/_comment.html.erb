@@ -7,17 +7,16 @@
         </svg>
       <% end %>
     <% end %>
-    <% user = User.find(comment[:user_id])%>
     <div class="profile-pic">
-      <% if user.avatar.attached? %>
-          <%= image_tag user.avatar.variant(gravity: "Center", crop: '300x300+0+0') %>
+      <% if comment.user.avatar.attached? %>
+          <%= image_tag comment.user.avatar.variant(gravity: "Center", crop: '300x300+0+0') %>
         <% else %>
           <%= image_tag "default-profile.png", width: 25%>
         <% end %>
     </div>
     <div class="comment-text">
       <div class="details">
-        <%= link_to "@#{user.username}", user_path(user.id) %>
+        <%= link_to "@#{comment.user.username}", user_path(comment.user_id) %>
         <span id="timestamps"><%= comment.created_at %></span>
       </div>
       <div class="comment-body">

@@ -29,6 +29,7 @@ class PostsController < ApplicationController
   # get /courses/:course_id/posts/:id
   def show
     @comment = Comment.new
+    @comments = @post.comments.includes(user: { avatar_attachment: :blob })
     respond_to do |format|
       format.html
       format.rtf do
