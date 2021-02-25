@@ -9,9 +9,9 @@
         <% end %>
     </div>
     <div class="comment-text">
-      <div class="user-details">
+      <div class="details">
         <%= link_to "@#{user.username}", user_path(user.id) %>
-        <span style="font-size: smaller;"><%= comment.created_at %></span>
+        <span id="timestamps"><%= comment.created_at %></span>
       </div>
       <div class="comment-body">
         <%= comment.body %>
