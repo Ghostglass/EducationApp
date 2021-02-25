@@ -200,7 +200,6 @@ nav {
   position: relative;
   background: black;
   padding: 4px 6px 4px 6px;
-  color: white;
   border-radius: 6px;
   border: 2px solid transparent;
   outline: none;
@@ -307,6 +306,7 @@ label {
   border: 2px solid transparent;
   outline: none;
   transition: 0.3s;
+  text-align: center !important;
 }
 
 .p-button-important {
