@@ -1,7 +1,19 @@
 <%# /courses/:course_id/posts/:post_id %>
 
-<h1><%= @post.title %></h1>
-<% if @post.course.user_id == session[:user_id] %>
-  <%= link_to "Edit Post", edit_course_post_url(@course, @post) %>
-<% end %>
-<%= @post.content %>
+<div class="page">
+  <h1 id="post-heading"><%= @post.title %></h1>
+  <p id="subheading">Last updated on <%= @post.updated_at.strftime("%D") %></p>
+  <hr style="width:50%">
+  <div class="button-panel">
+    <%= link_to "Back to Course", course_url(@course), class: "p-button" %>
+    <% if @post.course.user_id == session[:user_id] %>
+      <%= link_to "Edit Post", edit_course_post_url(@course, @post), class: "p-button" %>
+    <% end %>
+  </div>
+  <div id="post-content">
+    <%= @post.content %>
+  </div>
+</div>
+
+
+

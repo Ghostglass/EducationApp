@@ -81,12 +81,18 @@ class PostsController < ApplicationController
   end
   
   def this_course
-    @course = Course.find(params[:course_id])
+    @course = Course.find_by_sql("    	
+    SELECT
+      courses.*,
+      (SELECT id FROM subscriptions WHERE subscriptions.course_id = courses.id AND subscriptions.user_id = #{ session[:user_id].nil? ? "NULL" : session[:user_id] }) as is_subbed
+    FROM courses
+    WHERE courses.id = #{ params[:course_id] }
+    GROUP BY courses.id;
+    ").first
   end
 
   def is_subscribed
-    @subscription = Subscription.find_by(course_id: params[:course_id], user_id: session[:user_id]) || Subscription.new()
-    unless @subscription.valid? || @is_owner
+    unless @course.is_subbed || @is_owner
       flash[:warning] = "You need to be subscribed to view this content"
       redirect_to course_url(@course)
     end

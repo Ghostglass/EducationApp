@@ -11,13 +11,13 @@
   <% end %>
 </div>
 
-<div id="posts" <%= "class=blur" unless @subscription.valid? || @is_owner %>>
+<div id="posts" <%= "class=blur" unless @course.is_subbed || @is_owner %>>
 
   <% post_limit ||= @course.posts.length %>
   <% if post_limit == 0 %>
     <p>No posts yet!</p>
   <% else %>
-    <%= render partial: @course.posts.take(post_limit), locals: { disabled: ( !(@subscription.valid? || @is_owner)), editing: false } %>
+    <%= render partial: @course.posts.take(post_limit), locals: { disabled: ( !(@course.is_subbed || @is_owner)), editing: false } %>
     <% if post_limit < @course.posts.length %>
       <h3>...</h3>
     <% end %>
