@@ -7,7 +7,7 @@
 
       <div id="avatar">
         <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar.variant(gravity: "Center", crop: '300x300+0+0') %>
+          <%= image_tag @user.avatar.variant(:gravity=>"Center", resize: "300x300^", crop: '400x300+0+0') %>
         <% else %>
           <%= image_tag "default-profile.png", width: 250%>
         <% end %>
