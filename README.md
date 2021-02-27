@@ -122,7 +122,7 @@ running `brew install node` - and then run `bundle exec rspec` again.
 
 ### Headline Specifications
 
-Actions are _italic_. Nouns are **bold**. Attributes of nouns are **_bold italics_**.
+<!--Actions are _italic_. Nouns are **bold**. Attributes of nouns are **_bold italics_**.-->
 
 ##### User Story 01
 
@@ -133,26 +133,26 @@ Actions are _italic_. Nouns are **bold**. Attributes of nouns are **_bold italic
 ##### User Story 02
 
 &nbsp;&nbsp;&nbsp;As an **unregistered user,**<br>
-&nbsp;&nbsp;&nbsp;So that I can use **_LearningApp,_**<br>
-&nbsp;&nbsp;&nbsp;I can _sign up, using the sign up/login page_<br>
+&nbsp;&nbsp;&nbsp;So that _I can use_ **_LearningApp,_**<br>
+&nbsp;&nbsp;&nbsp;I _can sign up, using_ **_the sign up/login page_**<br>
 
 ##### User Story 03
 
 &nbsp;&nbsp;&nbsp;As an **unregistered user,**<br>
 &nbsp;&nbsp;&nbsp;so that I _can't enter_ an **_invalid email address,_**<br>
-&nbsp;&nbsp;&nbsp;I can \*see helpful **information** that indicates if an **email** is invalid<br>
+&nbsp;&nbsp;&nbsp;I can _see helpful_ **information** that _indicates_ if an **_email_** is _invalid_<br>
 
 ##### User Story 04
 
 &nbsp;&nbsp;&nbsp;As a **registered user,**<br>
 &nbsp;&nbsp;&nbsp;So that I _can use_ **EducationApp,**<br>
-&nbsp;&nbsp;&nbsp;I _would like to log in, using_ the log in page<br>
+&nbsp;&nbsp;&nbsp;I _would like to log in_, _using_ the **_log in page_**<br>
 
 ##### User Story 05
 
-&nbsp;&nbsp;&nbsp;As a _logged_ in **user,**<br>
-&nbsp;&nbsp;&nbsp;So that I *\_can stop viewing and *adding content,_\*<br>
-&nbsp;&nbsp;&nbsp;I \_would like to sign out_<br>
+&nbsp;&nbsp;&nbsp;As a **logged in user,**<br>
+&nbsp;&nbsp;&nbsp;So that I _can stop viewing and _adding content,_<br>
+&nbsp;&nbsp;&nbsp;I _would like to sign out_<br>
 
 ##### User Story 06
 
@@ -162,21 +162,21 @@ Actions are _italic_. Nouns are **bold**. Attributes of nouns are **_bold italic
 
 ##### User Story 07
 
-&nbsp;&nbsp;&nbsp;As a _logged_ in **user,**<br>
-&nbsp;&nbsp;&nbsp;So that I can _choose_ a **course,** I would like to _subscribe_ to a **course**<br>
-&nbsp;&nbsp;&nbsp;and \*see it on my profile page.\*<br>
+&nbsp;&nbsp;&nbsp;As a **logged in user,**<br>
+&nbsp;&nbsp;&nbsp;So that _I can choose_ a **course,** I would like to _subscribe_ to a **course**<br>
+&nbsp;&nbsp;&nbsp;and _see it_ on **_my profile page._**<br>
 
 ##### User Story 08
 
-&nbsp;&nbsp;&nbsp;As a _logged_ in **user,**<br>
-&nbsp;&nbsp;&nbsp;So that I _can only see_ relevant **courses,**<br>
+&nbsp;&nbsp;&nbsp;As a **logged_ in user,**<br>
+&nbsp;&nbsp;&nbsp;So that _I can only see_ relevant **courses,**<br>
 &nbsp;&nbsp;&nbsp;I _would like to delete_ a **course.**<br>
 
 ##### User Story 09
 
-&nbsp;&nbsp;&nbsp;As an _unregistered_ **user,**<br>
-&nbsp;&nbsp;&nbsp;So that I _can see_ a **list** of **courses,**<br>
-&nbsp;&nbsp;&nbsp;I would _like to access_ **_all_** the **courses on the main page.**<br>
+&nbsp;&nbsp;&nbsp;As an **unregistered user,**<br>
+&nbsp;&nbsp;&nbsp;So that _I can see_ a **_list of courses,_**<br>
+&nbsp;&nbsp;&nbsp;I would _like to access_ **_all the courses_** on the **_main page._**<br>
 
 ---
 
@@ -187,9 +187,7 @@ Actions are _italic_. Nouns are **bold**. Attributes of nouns are **_bold italic
 ## Database Domain Modelling
 
 The above user stories parse into several classes. As per [Class Responsibility
-Collaborator](http://agilemodeling.com/artifacts/crcModel.htm) modelling, there are two obvious classes - **User** and
-<br>
-[Our ROM/CRC wall](https://docs.google.com/spreadsheets/d/1MY_k3M5dSJhwfK4WqbYEWLGjOT0geaKs3143NCT5oMA/edit?usp=sharing modelling)
+Collaborator](http://agilemodeling.com/artifacts/crcModel.htm)<br>modelling, there are two obvious classes:<br>**User** and **Post**
 
 
 **Post**.
@@ -197,7 +195,7 @@ Collaborator](http://agilemodeling.com/artifacts/crcModel.htm) modelling, there 
 Class: **Post**
 
 
-  New_User_and New_content              and Many Posts
+  New_User_and New_content                 Many Posts
 | ------------------------------------- | ------------- |
 | Knows own content                     |
 | Knows own posts                       |
@@ -225,7 +223,8 @@ Class: **User**
 | Knows own user_email |               |
 | Knows own password   |               |
 | Knows own posts      | Post          |
-
+|______________________________________|
+<br>
 #### Each class needs its own table, each with columns<br>
 corresponding to the responsibilities of each class.<br>
 #### Ruby Object Modelling helps us carry this task forward.<b>
@@ -234,14 +233,14 @@ Table: **Users**
 
 | user_id | user_name | user_email   | user*password* |
 | ------- | --------- | -------------| -------------- |
-| User1   | Aquaman   | aquaman@.com |
-| User2   |xx         | xxxx@.com
-| User3   |xxx          xxxx@.com 
-_____________________________________|
+| User1   | Aquaman   | aquaman@.com | •••••••••••
+| User2   |xx         | xxxx@.com    | •••••••••      | 
+| User3   |xxx          xxxx@.com    | •••••          | 
+_____________________________________|----------------|
 |  Table: **Posts**
 -------------------------------------
 | post_id | user_id | post_content |
-| ------- | ------- | ---------------| |
+| ------- | ------- | ---------------|
 
 <!-- Additional columns in Users: user_profile_pic, content_type -->
 <!-- Additional columns in Posts: post_time, edit_time -->
@@ -257,7 +256,7 @@ _____________________________________|
 - [ ] Tables to receive user data
 - [ ] Page with post form for a new post,
 - [ ] Users can upload/delete a photo for their profile picture
-- [ ] Mentors can add/delete courses
+- [ ] Users can add/delete courses
 - [ ] Users can add/delete star review ratings for courses
 - [ ] Page with a list of posts with date and time posted
 - [ ] Page with a list of courses available
