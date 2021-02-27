@@ -1,8 +1,5 @@
 ## 🔗 Knowledge Pill: an E-Learning and Skills - Sharing App
 <br>
-
----
-
 <!DOCTYPE html>
 <html>
 <body>
