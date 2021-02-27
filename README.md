@@ -6,7 +6,7 @@
   <div>
     <a href="" rel="logo"><img width=400px height=400px src="app/assets/images/navbar-brand.png"
         alt="A dark, small blue triangle with small white text in the center reading, 'Knowledge Pill, Share Your Knowledge' a web app logo for e-learning"></a>
-    <p> 🖼 <b>Interactive Fun: resize both the height and the width of our fantabulous logo<br>that our most talented, LiviaBas designed for our Knowledge Pill project.🖼/p>
+    <p> 🖼 <b>Interactive Fun: resize both the height and the width of our fantabulous logo<br>that our most talented, LiviaBas designed for our Knowledge Pill project.🖼
   </div>
 </body>
 </html>
@@ -202,8 +202,8 @@ Class: **Post**
 | Knows own user_name                   |
 | Knows own creation                    |
 | Knows edit time_date                  |
-| <!-- Knows own creation time and date | -->          
-| <!-- Knows edit time and date         | -->           
+| <!-- Knows own creation time and date -->          
+| <!-- Knows edit time and date -->           
 
 Class: **User**
 
@@ -213,7 +213,7 @@ Class: **User**
 | Knows own user_email           |               |
 | Knows own password             |               |
 | Knows own posts                |               |
-| <!-- Knows own profile pic url | Post -->      |
+| <!-- Knows own profile pic url Post -->        |
 
 Class: **User**
 
@@ -225,8 +225,10 @@ Class: **User**
 | Knows own posts      | Post          |
 |______________________________________|
 <br>
-#### Each class needs its own table, each with columns<br>
+
+### Each class needs its own table, each with columns<br>
 corresponding to the responsibilities of each class.<br>
+
 #### Ruby Object Modelling helps us carry this task forward.<b>
 
 Table: **Users**
