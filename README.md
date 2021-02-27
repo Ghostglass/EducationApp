@@ -1,26 +1,15 @@
-## 🔗 Knowledge Pill: an E-Learning and Skills - Sharing App<br>
+## 🔗 Knowledge Pill: an E-Learning and Skills - Sharing App
+<br>
 
 ---
 
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    div {
-      border: 2px solid;
-      padding: 20px;
-      width: 300px;
-      resize: both;
-      overflow: auto;
-    }
-  </style>
-</head>
 <body>
   <div>
     <a href="" rel="logo"><img width=400px height=400px src="app/assets/images/navbar-brand.png"
         alt="A dark, small blue triangle with small white text in the center reading, 'Knowledge Pill, Share Your Knowledge' a web app logo for e-learning"></a>
-    <p> 🖼 <b>Interactive Fun: resize both the height and the width of our fantabulous logo that our most talented, LiviaBas designed for our Knowledge Pill project.</p>
-    <p>To resize: Click and drag the bottom right corner of the frame 🖼</p>
+    <p> 🖼 <b>Interactive Fun: resize both the height and the width of our fantabulous logo<br>that our most talented, LiviaBas designed for our Knowledge Pill project.🖼/p>
   </div>
 </body>
 </html>
@@ -194,7 +183,7 @@ Actions are _italic_. Nouns are **bold**. Attributes of nouns are **_bold italic
 
 ---
 
-### 'Nice to Have' Specifications
+##### 'Nice to Have' Specifications
 
 ---
 
@@ -202,11 +191,15 @@ Actions are _italic_. Nouns are **bold**. Attributes of nouns are **_bold italic
 
 The above user stories parse into several classes. As per [Class Responsibility
 Collaborator](http://agilemodeling.com/artifacts/crcModel.htm) modelling, there are two obvious classes - **User** and
+<br>
+[Our ROM/CRC wall](https://docs.google.com/spreadsheets/d/1MY_k3M5dSJhwfK4WqbYEWLGjOT0geaKs3143NCT5oMA/edit?usp=sharing modelling)
+
+
 **Post**.
 
 Class: **Post**
 
-| Responsibilities | Collaborators | Many Users_
+
   New_User_and New_content              and Many Posts
 | ------------------------------------- | ------------- |
 | Knows own content                     |
@@ -214,8 +207,8 @@ Class: **Post**
 | Knows own user_name                   |
 | Knows own creation                    |
 | Knows edit time_date                  |
-| <!-- Knows own creation time and date | -->           |
-| <!-- Knows edit time and date         | -->           |
+| <!-- Knows own creation time and date | -->          
+| <!-- Knows edit time and date         | -->           
 
 Class: **User**
 
@@ -236,25 +229,25 @@ Class: **User**
 | Knows own password   |               |
 | Knows own posts      | Post          |
 
-#### Each class needs its own table, each with columns
-corresponding to the responsibilities of each class.
-#### Ruby Object Modelling helps us carry this task forward.
+#### Each class needs its own table, each with columns<br>
+corresponding to the responsibilities of each class.<br>
+#### Ruby Object Modelling helps us carry this task forward.<b>
 
 Table: **Users**
 
-| user_id | user_name | user_email           | user*password* |
-| ------- | --------- | -------------------- | -------------- |
-| User1   | Aquaman   | aquaman@hot. XXXXXXX |
-| User2   |
-| User3   |
-____________________________________
+| user_id | user_name | user_email   | user*password* |
+| ------- | --------- | -------------| -------------- |
+| User1   | Aquaman   | aquaman@.com |
+| User2   |xx         | xxxx@.com
+| User3   |xxx          xxxx@.com 
+_____________________________________|
 |  Table: **Posts**
-------------------------------------
+-------------------------------------
 | post_id | user_id | post_content |
-| ------- | ------- | ------------ |
+| ------- | ------- | ---------------| |
 
-Additional columns in Users: user_profile_pic, content_type
-Additional columns in Posts: post_time, edit_time
+<!-- Additional columns in Users: user_profile_pic, content_type -->
+<!-- Additional columns in Posts: post_time, edit_time -->
 
 ---
 
@@ -312,5 +305,4 @@ target="KnowledgePill" rel="noopener"><b>🔗`KnowledgePill`</b></a>
 <br>We value your feedback, suggestions, questions, and thoughts.<br>
 Share your thoughts here :)
 <br>
-<br><textarea name="Ruby on Rails" id="Writing an app" cols="60" rows="8"></textarea><b><still-align-center-form><button>Submit</button></still-align-center-form>
 
