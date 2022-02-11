@@ -70,40 +70,54 @@ running `brew install node` - and then run `bundle exec rspec` again.
 #### 1. Parsing User Stories
 
 - [x] As a user,
-      If I'm not signed in,
-      I will be redirected to the sign up/login page
+      ```If I'm not signed in,```
+      ```I will be redirected``` ```to the sign up/login page```
       <br>
+  
 - [x] As an unregistered user,
-      So that I can use LearningApp
-      I can sign up, using the sign up/login page
+      ```So that I can use LearningApp```
+      ```I can sign up,``` 
+      ```using the sign up/login page```
       <br>
+  
 - [x] As an unregistered user,
-      so that I can't enter an invalid email address,
-      I can see helpful information that indicates if an email is invalid
+      ```so that I can't enter an invalid email address,```
+      ```I can see helpful information``` 
+  ```that indicates if an email is invalid```
       <br>
+  
 - [x] As a registered user,
-      So that I can use EducationApp,
-      I would like to log in, using the log in page.
+      ```So that I can use EducationApp```
+      ```I would like to log in``` 
+      ```using the log in page```
       <br>
+  
 - [x] As a logged in user,
-      So that I can stop viewing and adding content,
-      I would like to sign out.
+      ```So that I can stop viewing and adding content,```
+      ```I would like to sign out.```
       <br>
+  
 - [x] As a logged in user,
-      So that I can see the user_content,
-      I would like to access my courses.
+      ```So that I can see the user_content,```
+      ```I would like to access my courses.```
       <br>
+  
 - [x] As a logged in user,
-      So that I can choose a course, I would like to subscribe to a course
-      and see it on my profile page.
+      ```So that I can choose a course,``` and  <br>
+      ```I would like to subscribe to a course``` 
+      ```see it on my profile page.```
       <br>
+  
 - [x] As a logged in user,
-      So that I can only see relevant courses,
-      I would like to delete a course.
+      ```So that I can only see relevant courses,```
+      ```I would like to delete a course.```
       <br>
+  
 - [x] As an unregistered user,
-      So that I can see a list of courses,
-      I would like to access all the courses on the main page.
+      ```So that I can see a list of courses,``` <br>
+      ```I would like to access``` 
+      ```all the courses on the main page.```
+      <br>
 
 #### 2. Database Domain Modelling
 
@@ -180,69 +194,91 @@ running `brew install node` - and then run `bundle exec rspec` again.
 
 ---
 
-##### 'Nice to Have' Specifications
+### 'Nice to Have' Specifications
 
 ---
 
 ## Database Domain Modelling
 
-The above user stories parse into several classes. As per [Class Responsibility
-Collaborator](http://agilemodeling.com/artifacts/crcModel.htm)<br>modelling, there are two obvious classes:<br>**User** and **Post**
+The above user stories parse into several classes.<br> 
+As per [Class ResponsibilityCollaborator](https://agilemodeling.com/artifacts/crcModel.html) <br> modelling, there are two obvious classes:
+
+• 1.) ** User ** 
+  <br>
+  and 
+  </br>
+• 2.) ** Post **
+  <br>
+  
+---
+
+#### Class:  Post  <br>
 
 
-**Post**.
+| ** New_User_and New_content  **       | **Many Posts**|
+|---------------------------------------|---------------|
+| Knows own content                     |       x       |
+| Knows own posts                       |       x       |
+| Knows own user_name                   |       x       |
+| Knows own creation                    |       x       |
+| Knows edit time_date                  |       x       |
+| <!-- Knows own creation time and date -->             |
+| <!-- Knows edit time and date -->                     |
 
-Class: **Post**
+                                                      
 
+#### Class: User 
 
-  New_User_and New_content                 Many Posts
-| ------------------------------------- | ------------- |
-| Knows own content                     |
-| Knows own posts                       |
-| Knows own user_name                   |
-| Knows own creation                    |
-| Knows edit time_date                  |
-| <!-- Knows own creation time and date -->          
-| <!-- Knows edit time and date -->           
+  Responsibility & Collaborators |** One_of many Users**
+|--------------------------------|-----------------------|
+| Knows own user_name            |          x            |           
+| Knows own user_email           |          x            |          
+| Knows own password             |          x            |             
+| Knows own posts                |          x            |
+|                                |                       |
+          <!-- Knows own profile pic url Post -->       
 
-Class: **User**
+<br> 
 
-| Responsibility | Collaborators |One_of many Users
-| ------------------------------ | ------------- |
-| Knows own user_name            |               |
-| Knows own user_email           |               |
-| Knows own password             |               |
-| Knows own posts                |               |
-| <!-- Knows own profile pic url Post -->        |
+#### Class: User_Posts  
 
-Class: **User**
-
-| Responsibility       | Collaborators |
-| -------------------- | ------------- |
-| Knows own user_name  |               |
-| Knows own user_email |               |
-| Knows own password   |               |
-| Knows own posts      | Post          |
-|______________________________________|
 <br>
 
-### Each class needs its own table, each with columns<br>
-corresponding to the responsibilities of each class.<br>
 
-#### Ruby Object Modelling helps us carry this task forward.<b>
+|   Responsibility     | Collaborators |
+|----------------------|---------------|
+| Knows own user_name  |---------------|               
+| Knows own user_email |---------------|               
+| Knows own password   |---------------|             
+| Knows own posts      |    Post       |         
+|----------------------|---------------|
+  
+<br>
 
-Table: **Users**
+### Each class needs its own table, each with columns <br>
+corresponding to the responsibilities of each class. <br>
 
-| user_id | user_name | user_email   | user*password* |
-| ------- | --------- | -------------| -------------- |
-| User1   | Aquaman   | aquaman@.com | •••••••••••
-| User2   |xx         | xxxx@.com    | •••••••••      | 
-| User3   |xxx          xxxx@.com    | •••••          | 
-_____________________________________|----------------|
-|  Table: **Posts**
--------------------------------------
+#### Ruby Object Modelling:<br>
+
+  • Table: helps us carry this task forward. <br>
+  
+  ** Users ** <br>
+  
+
+| user_id | user_name | user_email   | user_password   |
+|---------|-----------|--------------|-----------------|
+| User1   | Aquaman   | aquaman@.com | •••••••••••     |
+| User2   |xx         | xxxx@.com    | •••••••••       | 
+| User3   |xxx        |  xxxx@.com   | ••••••••••      |
+|---------|-----------|--------------|-----------------|
+
+<br>
+
+ 
+  ► Table:  Posts<br>           
+
 | post_id | user_id | post_content |
-| ------- | ------- | ---------------|
+| ------- | ------- | -------------|
 
 <!-- Additional columns in Users: user_profile_pic, content_type -->
 <!-- Additional columns in Posts: post_time, edit_time -->
@@ -251,31 +287,49 @@ _____________________________________|----------------|
 
 ## MVP Planning
 
-- [ ] Homepage with a signup option
-- [ ] Signup form
-- [ ] Homepage with a login form and
-- [ ] A 'remember me' login feature
-- [ ] Tables to receive user data
-- [ ] Page with post form for a new post,
-- [ ] Users can upload/delete a photo for their profile picture
-- [ ] Users can add/delete courses
-- [ ] Users can add/delete star review ratings for courses
-- [ ] Page with a list of posts with date and time posted
-- [ ] Page with a list of courses available
-- [ ] Users can create, edit, add, or delete their own
-      courses, posts, subscriptions, and/or pictures.
+- [x] Homepage with a signup option<br>
+  
+- [x] Signup form<br>
+  
+- [x] Homepage with a login form and <br>
+  
+- [x] A 'remember me' login feature <br>
+  
+- [x] Tables to receive user data <br>
+  
+- [x] Page with post form for a new post,<br>
+  
+- [x] Users can upload/delete a photo for their profile picture <br>
+  
+- [x] Users can add/delete courses <br>
+  
+- [x] Users can add/delete star review ratings for courses <br>
+  
+- [x] Page with a list of posts with date and time posted <br>
+  
+- [x] Page with a list of courses available <br>
+  
+- [x] Users can create, edit, add, or delete their own <br>
+  
+  courses, posts, subscriptions, and/or pictures.<br>
 
 ---
 
 ## Layout Planning
 
-- [x] Wireframe Signup Page
-- [x] Wireframe Login Page
-- [x] Wireframe New Post Page
-- [x] Wireframe Add content to Page
-- [x] Wireframe Add Courses
-- [x] Wireframe Homepage
-- [x] Wireframe Add Subscription form
+- [x] Wireframe Signup Page<br>
+  
+- [x] Wireframe Login Page<br>
+  
+- [x] Wireframe New Post Page<br>
+  
+- [x] Wireframe Add content to Page<br>
+  
+- [x] Wireframe Add Courses<br>
+  
+- [x] Wireframe Homepage<br>
+  
+- [x] Wireframe Add Subscription form<br>
 
 ---
 
@@ -286,21 +340,28 @@ up to become a user.
 
 Creating these follows the TDD process:
 
-1. Composition of pseudocode.
-2. Composition of feature tests.
-3. Composition of unit tests.
-4. Composition of code.
-5. Running of feature and unit tests.
-6. Refactoring, and if necessary correction of code.
+1. Composition of pseudocode.<br>
+  
+2. Composition of feature tests.<br>
+  
+3. Composition of unit tests.<br>
+  
+4. Composition of code.<br>
+  
+5. Running of feature and unit tests.<br>
+  
+6. Refactoring, and if necessary correction of code.<br>
+  
 
 ## STUDY WITH KNOWLEDGE PILL
+______________________________
 
 <a href="https://knowledge-pill.herokuapp.com/login"
 target="KnowledgePill" rel="noopener"><b>🔗`KnowledgePill`</b></a>
 
 <img src="https://media.giphy.com/media/xT5LMYsUngncR3KNzy/giphy.gif">
 
-<br>We value your feedback, suggestions, questions, and thoughts.<br>
+**<br>We value your feedback, suggestions, questions, and thoughts.<br>
 Share your thoughts here :)
-<br>
+<br>**
 
